@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>InstaGrabber</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <img src="icons/icon48.png" alt="" width="32" height="32" />
+      <div>
+        <h1>InstaGrabber</h1>
+        <p class="sub">Instagram photo &amp; video downloader</p>
+      </div>
+    </header>
+
+    <form id="link-form">
+      <label for="link">Paste a post, reel or story link</label>
+      <div class="row">
+        <input id="link" type="url" placeholder="https://www.instagram.com/p/…" autocomplete="off" spellcheck="false" />
+        <button id="link-btn" type="submit" class="primary">Download</button>
+      </div>
+    </form>
+
+    <section class="actions">
+      <button id="current-btn" type="button" class="action">
+        <span class="title">Download what's on screen</span>
+        <span class="hint">Current post, reel or story · <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd></span>
+      </button>
+      <button id="bulk-btn" type="button" class="action">
+        <span class="title">Download all loaded posts</span>
+        <span class="hint">Every post on this page. Scroll a profile to load more first.</span>
+      </button>
+    </section>
+
+    <div id="status" role="status" aria-live="polite"></div>
+
+    <details>
+      <summary>Settings</summary>
+      <label class="check"><input type="checkbox" id="perUserFolder" /> Save into a folder per account</label>
+      <label class="check"><input type="checkbox" id="saveAs" /> Ask where to save each file</label>
+      <p class="note">Files go to <code>Downloads/Instagram/</code>. You must be logged in to instagram.com.</p>
+    </details>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
