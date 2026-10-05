@@ -364,12 +364,13 @@
 
   function injectGrid(a) {
     if (a.querySelector(':scope > .igdl-grid-btn')) return;
-    const sc = postLinkShortcode(a);
-    if (!sc) return;
     if (getComputedStyle(a).position === 'static') a.classList.add('igdl-rel');
     const btn = makeButton('igdl-grid-btn', 'Download');
+    // Instagram recycles grid links while scrolling, so read the shortcode at click time.
     btn.addEventListener('click', (e) => {
       stop(e);
+      const sc = postLinkShortcode(a);
+      if (!sc) return toast("Couldn't find this post's link.", { kind: 'error' });
       run(btn, () => downloadShortcode(sc));
     });
     a.appendChild(btn);
